@@ -54,17 +54,27 @@ public final class Snorlax extends Entity implements Moves {
 
         if(snorTarget.isPresent() == true){
             if(moveTo(world, snorTarget.get(), scheduler) == true){
-                eatBerry(world, scheduler);
+                Entity berry = snorTarget.get();
+                eatBerry(world, scheduler, berry, imageStore);
             }
         }
         scheduler.scheduleEvent(this, Activity.createActivityAction(this, world, imageStore), this.actionPeriod);
     }
 
-    public void eatBerry(WorldModel world, EventScheduler scheduler){
-        Snorlax newsnor = createSnorlax(this.position, this.actionPeriod+1, this.animationPeriod+1, this.images);
-        world.removeEntity(scheduler, this);
-        world.addEntity(newsnor);
+    public void eatBerry(WorldModel world, EventScheduler scheduler, Entity berry, ImageStore imageStore){
+        world.removeEntity(scheduler, berry);
+        this.actionPeriod += 0.3;
+        this.animationPeriod += 0.3;
         System.out.println("Snorlax ate a nanab berry! He got a little slower...");
+
+        if(this.actionPeriod > 1.1 || this.animationPeriod > 1.1){
+            Point temp = this.position;
+            world.removeEntity(scheduler, this);
+            List<PImage> snorlax_img = imageStore.getImageList("snorlaxsleep");
+            Snorlax sleepysnorlax = Snorlax.createSnorlax(temp, 0, 0, snorlax_img);
+            world.addEntity(sleepysnorlax);
+            System.out.println("Oh no... Snorlax fell asleep.");
+        }
     }
 
     public void scheduleActions(WorldModel world, ImageStore imageStore, EventScheduler eventScheduler) {

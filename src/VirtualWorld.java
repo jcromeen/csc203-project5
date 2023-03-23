@@ -78,20 +78,6 @@ public final class VirtualWorld extends PApplet {
 
     }*/
 
-    /*public void trydropBerry(Point pos){
-        Random random = new Random();
-        int range = 10;
-        int int_random = random.nextInt(range);
-        Point np = new Point(pos.x+1, pos.y);
-        if(int_random > 4 && !world.isOccupied(np) && world.withinBounds(np)){
-            List<PImage> berries = imageStore.getImageList("nanabberry");
-            NanabBerry berry = NanabBerry.createBerry(np, 0.2, berries);
-            berry.scheduleActions(world, imageStore, scheduler);
-            world.addEntity(berry);
-            System.out.println("Looks like an item dropped! Maybe it can help Snorlax!");
-        }
-    }*/
-
     public void mousePressed(){
         Point click = mouseToPoint();
         if(world.withinBounds(click) && !(world.isOccupied(click))){
