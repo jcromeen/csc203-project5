@@ -48,7 +48,6 @@ public final class Snorlax extends Entity implements Moves {
         return (p1.x == p2.x && Math.abs(p1.y - p2.y) == 1) || (p1.y == p2.y && Math.abs(p1.x - p2.x) == 1);
     }
 
-
     public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
         Optional<Entity> snorTarget = world.findNearest(this.position, new ArrayList<>(List.of(NanabBerry.class)));
 

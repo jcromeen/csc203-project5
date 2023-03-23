@@ -92,8 +92,6 @@ public final class VirtualWorld extends PApplet {
             world.addEntity(snorlax);
             snorlax.scheduleActions(world, imageStore, scheduler);
 
-
-
             for (int x = click.x - 1; x < click.x + 2; x++) {
                 for (int y = click.y - 1; y < click.y + 2; y++) {
                     if (world.withinBounds(new Point(x, y))) {
@@ -205,9 +203,6 @@ public final class VirtualWorld extends PApplet {
                     }
                 }
             }
-
-
-
         } else{
             Optional<Entity> entityOptional = world.getOccupant(click);
             Entity entity = entityOptional.get();

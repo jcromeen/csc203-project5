@@ -22,7 +22,6 @@ public final class Pokeball extends Entity {
         if(world.withinBounds(this.position)){
             world.removeEntity(scheduler, this);
         }
-
     }
     public void scheduleActions(WorldModel world, ImageStore imageStore, EventScheduler eventScheduler) {
         eventScheduler.scheduleEvent(this, Animation.createAnimationAction(this, 0), this.getAnimationPeriod());
