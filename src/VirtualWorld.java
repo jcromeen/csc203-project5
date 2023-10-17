@@ -116,7 +116,6 @@ public final class VirtualWorld extends PApplet {
 
                         }
                     }
-
                 }
             }
             if(world.withinBounds(new Point(click.x+2, click.y))){
